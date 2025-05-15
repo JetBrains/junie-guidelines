@@ -1,57 +1,77 @@
 # Spring Boot Guidelines
 
-1. Prefer Constructor Injection over Field/Setter Injection
-   * Declare all the mandatory dependencies as `final` fields and inject them through constructor.
-   * Spring will auto-detect if there is only one constructor, no need to add `@Autowired` on the constructor.
-   * Avoid field/setter injection in production code.
+## 1. Prefer Constructor Injection over Field/Setter Injection
+* Declare all the mandatory dependencies as `final` fields and inject them through the constructor.
+* Spring will auto-detect if there is only one constructor, no need to add `@Autowired` on the constructor.
+* Avoid field/setter injection in production code.
 
-2. Limit using `public` Visibility Modifier
-   * Controllers and their methods, `@Configuration` classes and the `@Bean` definition methods visibility can be package-private.
+## 2. Prefer package-private over public for Spring components
+* Declare Controllers, their request-handling methods, `@Configuration` classes and `@Bean` methods with default (package-private) visibility whenever possible. There’s no obligation to make everything `public`.
 
-3. Organize Configuration with Typed Properties
-   * Group application-specific configuration properties with a common prefix in `application.properties` or `.yml`.
-   * Bind them to `@ConfigurationProperties` classes with validation annotations so that the application will fail fast if the configuration is invalid.
+## 3. Organize Configuration with Typed Properties
+* Group application-specific configuration properties with a common prefix in `application.properties` or `.yml`.
+* Bind them to `@ConfigurationProperties` classes with validation annotations so that the application will fail fast if the configuration is invalid.
+* Use environment variables instead of profiles
 
-4. Define Clear Transaction Boundaries
-   * Treat the `@Service` layer methods as transactional units.
-   * Mark methods with read-only operations with `@Transactional(readOnly = true)`.
-   * Mark methods with write operations with plain `@Transactional`.
-   * Keep each transaction's scope as small as possible.
+## 4. Define Clear Transaction Boundaries
+* Define each Service-layer method as a transactional unit.
+* Annotate query-only methods with `@Transactional(readOnly = true)`.
+* Annotate data-modifying methods with `@Transactional`.
+* Limit the code inside each transaction to the smallest necessary scope.
 
-5. Disable Open Session in View
-   * While using Spring Data JPA, disable Open Session in View filter by setting `spring.jpa.open-in-view=false` in `application.properties/yml`.
 
-6. Keep JPA Entities Out of Your Web Layer
-   * Don't expose entities directly as responses in controllers.
-   * Use simple Request/Response records instead.
-   * Apply Jakarta Validation annotations on Request records for input validations.
+## 5. Disable Open Session in View Pattern
+* While using Spring Data JPA, disable the Open Session in View filter by setting \``` spring.jpa.open-in-view=false` `` in `application.properties/yml.`
 
-7. Use proper REST API guidelines
-   * Use the URL patterns as `/api/{version}/resource`
-   * Return appropriate HTTP Status codes using `ResponseEntity`
+## 6. Separate Web Layer from Persistence Layer
+* Don’t expose entities directly as responses in controllers.
+* Define explicit request and response record (DTO) classes instead.
+* Apply Jakarta Validation annotations on your request records to enforce input rules.
 
-8. Use Command Objects for Business Operations
-   * Create purpose-built command records (e.g., `CreateOrderCommand`) to wrap input data.
-   * Pass these commands into service methods to carry out create/update logic.
+## 7. Follow REST API Design Principles
+* **Versioned, resource-oriented URLs:**  
+  Structure your endpoints as `/api/v{version}/resources` (e.g. /api/v1/orders).
+* **Consistent patterns for collections and sub-resources:**  
+  Keep URL conventions uniform (for example, `/orders/{orderId}/items` for items belonging to a specific order).
+* **Explicit HTTP status codes via ResponseEntity:**  
+  Use `ResponseEntity<T>` to return the correct status (e.g. 200 OK, 201 Created, 404 Not Found) along with the response body.
 
-9. Centralize Error Handling
-   * Implement a `@ControllerAdvice` (or `@RestControllerAdvice`) with `@ExceptionHandler` methods.
-   * Return uniform error responses—consider using the `ProblemDetails` response format (RFC 7807).
+## 8. Use Command Objects for Business Operations
+* Create purpose-built command records (e.g., `CreateOrderCommand`) to wrap input data.
+* Accept these commands in your service methods to drive creation or update workflows.
 
-10. Actuator
-    * Expose only necessary actuator endpoints (such as `/health`, `/info`, `/metrics`) without security. 
-    * Secure all the other actuator endpoints.
+## 9. Centralize Exception Handling
+* Define a global handler class annotated with `@ControllerAdvice` (or `@RestControllerAdvice` for REST APIs) using `@ExceptionHandler` methods to handle specific exceptions.
+* Return consistent error responses. Consider using the ProblemDetails response format ([RFC 7807](https://www.rfc-editor.org/rfc/rfc7807.html)).
 
-11. i18n using ResourceBundles
-    * Use ResourceBundles to show text in the user-preferred locale instead of hard coding.
+## 10. Actuator
+* Expose only essential actuator endpoints (such as /health, /info, /metrics) without requiring authentication. All the other actuator endpoints must be secured.
 
-12. Use Testcontainers for integrations. 
-    * Spin up real services (databases, message brokers, etc.) in your integration tests to mirror production environments.
+## 11. Internationalization with ResourceBundles
+* Externalize all user-facing text such as labels, prompts, and messages into ResourceBundles rather than embedding them in code.
 
-13. Randomize the application port during integration testing. 
-    * When running integration tests, start the application on a random available port to avoid port conflicts by using `@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)`.
+## 12. Use Testcontainers for integration tests
+* Spin up real services (databases, message brokers, etc.) in your integration tests to mirror production environments.
 
-14. Logging
-    * Don't use `System.out.println()` to log any information. Use **SLF4J** Logger.
-    * Make sure not to log any sensitive information.
-    * While logging verbose information using `debug`, or `trace` log level, that may involve method calls, check if the debug/trace log level is enabled.
+## 13. Use random port for integration tests
+* When writing integration tests, start the application on a random available port to avoid port conflicts by annotating the test class with:
+
+    ```java
+    @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+    ```
+
+## 14. Logging
+* **Use a proper logging framework.**  
+  Never use `System.out.println()` for application logging. Rely on SLF4J (or a compatible abstraction) and your chosen backend (Logback, Log4j2, etc.).
+
+* **Protect sensitive data.**  
+  Ensure that no credentials, personal information, or other confidential details ever appear in log output.
+
+* **Guard expensive log calls.**  
+  When building verbose messages at `DEBUG` or `TRACE` level, especially those involving method calls or complex string concatenations, wrap them in a level check:
+
+```java
+if (logger.isDebugEnabled()) {
+    logger.debug("Detailed state: {}", computeExpensiveDetails());
+}
+```

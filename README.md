@@ -41,8 +41,7 @@ the guidelines in `.junie/guidelines.md` file so that Junie would follow these g
 ## Guidelines Catalog
 
 ### Java
-
-#### [Spring Boot](/guidelines/java/spring-boot/guidelines.md)
+* [Spring Boot](/guidelines/java/spring-boot/guidelines.md)
 
 ## Contributing
 Contributions are always welcome! Please check out the [contributing guidelines](/CONTRIBUTING.md).
