@@ -26,7 +26,7 @@ These guidelines cover:
 
 ## How to use the guidelines in Junie?
 You can specify your coding style, best practices, and general preferences by specifying 
-the guidelines in `.junie/guidelines.md` file so that Junie would follow these guidelines while generating code.
+the guidelines in `.junie/guidelines.md` file so that Junie will follow these guidelines while generating code.
 
 ## Table Of Contents
 
