@@ -1,5 +1,7 @@
 # Golang - Gin Guidelines
 
+Junie guidelines for developing go services with the [gin-gonic](https://gin-gonic.com) framework.
+
 ## 1. Organize Project Structure
 
 * Follow a domain-driven or feature-based structure rather than organizing by technical layers
