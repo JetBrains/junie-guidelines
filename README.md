@@ -35,12 +35,16 @@ the guidelines in `.junie/guidelines.md` file so that Junie will follow these gu
     - [Contents](#table-of-contents)
     - [Guidelines](#guidelines-catalog)
         - [Java](#java)
+        - [Python](#python)
     - [Contributing](#contributing)
 
 ## Guidelines Catalog
 
 ### Java
 * [Spring Boot](/guidelines/java/spring-boot/guidelines.md) [(with Explanations)](/guidelines/java/spring-boot/guidelines-with-explanations.md)
+
+### Python
+* [Django](/guidelines/python/django/guidelines.md) [(with Explanations)](/guidelines/python/django/guidelines-with-explanations.md)
 
 ## Contributing
 Contributions are always welcome! Please check out the [contributing guidelines](/CONTRIBUTING.md).
