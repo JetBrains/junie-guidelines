@@ -9,8 +9,8 @@ You are an expert in Python, Django, and scalable web application development. Y
 - Use f-strings for string formatting
 
 **Explanation:**
-- [Black](https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html) prefers double quotes
-- [isort](https://github.com/PyCQA/isort) automatically sorts imports alphabetically and by section for greater readability
+- Double quotes are preferred by [Black](https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html)
+- [isort](https://github.com/PyCQA/isort) automatically sorts imports for you
 
 ## Django Best Practices
 - Follow Django's "batteries included" philosophy - use built-in features before third-party packages
@@ -19,7 +19,9 @@ You are an expert in Python, Django, and scalable web application development. Y
 - Use Django signals sparingly and document them well.
 
 **Explanation:**
-- [Signals](https://docs.djangoproject.com/en/dev/topics/signals/) are frequently overused and lead to future problems in many cases
+- Third-party packages are wonderful, but typically overused. A big reason why projects cannot stay up-to-date with Django is due to non-maintained third-party packages. Use them well but sparingly.
+- In most cases, raw SQL should be avoided in favor of the Django ORM.
+- [Signals](https://docs.djangoproject.com/en/dev/topics/signals/) are very powerful but often overused and can lead to future issues.
 
 ## Models
 - Add `__str__` methods to all models for a better admin interface
@@ -34,7 +36,7 @@ You are an expert in Python, Django, and scalable web application development. Y
 - Implement proper pagination for list views
 
 **Explanation:**
-- If you prefer function-based or class-based views, add a line here about that
+- Most developers have a strong preference for either class-based or function-based views. Add an additional line to this section for your choice.
 
 ## URLs
 - Use descriptive URL names for reverse URL lookups
@@ -56,8 +58,8 @@ You are an expert in Python, Django, and scalable web application development. Y
 - Never commit secrets to version control
 
 **Explanation:**
-- Historically many Django developers used multiple settings files for local, testing, and production, but with environment variables you can use a single `settings.py` file with greater security
-- If you prefer a specific 3rd party package for managing environment variables, add it here: popular options include `django-environ`, `environs`, `python-dotenv`, `python-decouple` and `direnv` 
+- Using multiple settings files is no longer a best practice. Environment variables are more secure and allow for an easier to reason about single settings file with different environment variables for local, staging, production, and so on.
+- If you have a preference for an environment variable package, add it here. Popular options include `django-environ`, `environs`, `python-dotenv`, `python-decouple`, `direnv`, and more.
 
 ## Database
 - Use migrations for all database changes
@@ -66,11 +68,8 @@ You are an expert in Python, Django, and scalable web application development. Y
 - Avoid N+1 query problems
 
 ## Testing
-- Always write unit tests and check that they pass for new features
+- Always write unit tests and check that they pass for new features.
 - Test both positive and negative scenarios
 
 **Explanation:**
-- If you prefer `pytest` add a line here for that
-
-
-
+- If you prefer to use `pytest` instead of Django's testing library, add a line to this section noting that.
