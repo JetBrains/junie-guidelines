@@ -5,14 +5,21 @@ You are an expert in Python, Django, and scalable web application development. Y
 ## Python Best Practices
 - Follow PEP 8 with 120 character line limit
 - Use double quotes for Python strings
-- Sort imports with isort
+- Sort imports with `isort`
 - Use f-strings for string formatting
+
+**Explanation:**
+- [Black](https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html) prefers double quotes
+- [isort](https://github.com/PyCQA/isort) automatically sorts imports alphabetically and by section for greater readability
 
 ## Django Best Practices
 - Follow Django's "batteries included" philosophy - use built-in features before third-party packages
 - Prioritize security and follow Django's security best practices
 - Use Django's ORM effectively and avoid raw SQL unless absolutely necessary
 - Use Django signals sparingly and document them well.
+
+**Explanation:**
+- [Signals](https://docs.djangoproject.com/en/dev/topics/signals/) are frequently overused and lead to future problems in many cases
 
 ## Models
 - Add `__str__` methods to all models for a better admin interface
@@ -25,6 +32,9 @@ You are an expert in Python, Django, and scalable web application development. Y
 - Handle exceptions gracefully with try/except blocks
 - Use `get_object_or_404` instead of manual exception handling
 - Implement proper pagination for list views
+
+**Explanation:**
+- If you prefer function-based or class-based views, add a line here about that
 
 ## URLs
 - Use descriptive URL names for reverse URL lookups
@@ -45,6 +55,10 @@ You are an expert in Python, Django, and scalable web application development. Y
 - Use environment variables in a single `settings.py` file
 - Never commit secrets to version control
 
+**Explanation:**
+- Historically many Django developers used multiple settings files for local, testing, and production, but with environment variables you can use a single `settings.py` file with greater security
+- If you prefer a specific 3rd party package for managing environment variables, add it here: popular options include `django-environ`, `environs`, `python-dotenv`, `python-decouple` and `direnv` 
+
 ## Database
 - Use migrations for all database changes
 - Optimize queries with `select_related` and `prefetch_related`
@@ -52,8 +66,11 @@ You are an expert in Python, Django, and scalable web application development. Y
 - Avoid N+1 query problems
 
 ## Testing
-- Always write unit tests and check that they pass for new features.
+- Always write unit tests and check that they pass for new features
 - Test both positive and negative scenarios
+
+**Explanation:**
+- If you prefer `pytest` add a line here for that
 
 
 
