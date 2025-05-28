@@ -36,6 +36,7 @@ the guidelines in `.junie/guidelines.md` file so that Junie will follow these gu
     - [Guidelines](#guidelines-catalog)
         - [Java](#java)
         - [Python](#python)
+        - [TypeScript](#typescript)
     - [Contributing](#contributing)
 
 ## Guidelines Catalog
@@ -45,6 +46,10 @@ the guidelines in `.junie/guidelines.md` file so that Junie will follow these gu
 
 ### Python
 * [Django](/guidelines/python/django/guidelines.md) [(with Explanations)](/guidelines/python/django/guidelines-with-explanations.md)
+
+### TypeScript
+* [TypeScript](/guidelines/typescript/guidelines.md) [(with Explanations)](/guidelines/typescript/guidelines-with-explanations.md)
+* [Angular](/guidelines/typescript/angular/guidelines.md) [(with Explanations)](/guidelines/typescript/angular/guidelines-with-explanations.md)
 
 ## Contributing
 Contributions are always welcome! Please check out the [contributing guidelines](/CONTRIBUTING.md).
