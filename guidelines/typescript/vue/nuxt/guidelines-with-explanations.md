@@ -16,12 +16,11 @@ You are an expert in JavaScript, Vue.js, TypeScript, Nuxt.js, and scalable web a
 - Async/await provides cleaner syntax for handling promises compared to .then() chains
 - Template literals (`${variable}`) are more readable than string concatenation with + operators
 
-## Nuxt.js Best Practices
-- Use useFetch or useAsyncData only for reactive data fetching
-- Implement proper error handling for API calls
-- Use $fetch for direct API calls (or when no reactivity is necessary/intended)
-- Create API services for complex operations
-- Leverage server routes for sensitive operations
+## Nuxt Best Practices
+- Use Composition API with `<script setup>` for components
+- Leverage auto-imports for Vue and Nuxt composables
+- Use Nuxt modules instead of manual configurations
+- Implement proper error handling with error.vue
 
 **Explanation:**
 - Nuxt 3 is built on Vue 3, Vite, and TypeScript, offering significant performance improvements over Nuxt 2
@@ -73,14 +72,20 @@ You are an expert in JavaScript, Vue.js, TypeScript, Nuxt.js, and scalable web a
 
 ## Components
 - Create reusable components in the components directory
-- Use props validation
+- Use TypeScript for props
+- Use defineModel instead of a manual implementation of custom v-model
+- Use script setup (with TS by default)
+- Use props destructuring instead of withDefaults
 - Implement proper component naming (PascalCase)
 - Use slots for flexible component content
 - Organize components in subdirectories by feature
 
 **Explanation:**
 - Components in Nuxt 3 are auto-imported, so proper organization is crucial for maintainability
-- Props validation improves component reliability and provides self-documentation
+- TypeScript for props provides better type safety, autocompletion, and documentation
+- defineModel simplifies two-way binding and is the recommended approach in Vue 3.4+
+- Script setup with TypeScript provides a more concise syntax and better type inference
+- Props destructuring with default values is cleaner than using withDefaults
 - PascalCase naming distinguishes components from HTML elements and follows Vue conventions
 - Slots allow components to be more flexible and reusable across different contexts
 - Organizing by feature (e.g., /components/auth/, /components/products/) improves discoverability
@@ -100,9 +105,10 @@ You are an expert in JavaScript, Vue.js, TypeScript, Nuxt.js, and scalable web a
 - Nuxt provides many built-in composables (useHead, useFetch, etc.) that are optimized for the framework
 
 ## State Management
-- Use useState for simple state management
-- Consider Pinia for complex state management
+- prefer useState when possible
+- use Pinia for more complex state management
 - Avoid global state when component or page-level state is sufficient
+- Do not use ref for global state
 - Structure stores by domain/feature
 - Implement proper typing for state
 
@@ -110,21 +116,24 @@ You are an expert in JavaScript, Vue.js, TypeScript, Nuxt.js, and scalable web a
 - useState is a built-in Nuxt 3 composable that provides reactive and SSR-friendly state
 - Pinia is the recommended store for complex applications, offering better TypeScript support and devtools integration
 - Overusing global state makes applications harder to test and reason about
+- Using ref for global state can lead to reactivity issues across components and during SSR
 - Domain-based store organization (e.g., user store, product store) improves maintainability
 - TypeScript typing for state prevents errors and improves developer experience
 
 ## API Calls
-- Use useFetch or useAsyncData for data fetching
+- Use useFetch or useAsyncData only for reactive data fetching
+- Composables should only be used in `setup` or in another composable - not `onMounted` or in a function triggered later on
 - Implement proper error handling for API calls
-- Use $fetch for direct API calls
-- Create API services for complex operations
+- Use $fetch for direct API calls (or when no reactivity is necessary/intended)
+- Create composables for complex operations
 - Leverage server routes for sensitive operations
 
 **Explanation:**
-- useFetch and useAsyncData are optimized for Nuxt's server and client rendering
+- useFetch and useAsyncData are optimized for Nuxt's server and client rendering but should only be used when reactivity is needed
+- Composables with useAsyncData/useFetch must be called during setup to work properly with SSR and hydration
 - Proper error handling improves user experience and helps with debugging
 - $fetch is a built-in fetch wrapper with automatic error handling and request/response interceptors
-- API services centralize API-related logic and make it easier to maintain
+- Composables for API operations centralize API-related logic and make it easier to maintain
 - Server routes (/server/api/) keep sensitive operations and API keys secure on the server
 
 ## TypeScript
@@ -133,6 +142,7 @@ You are an expert in JavaScript, Vue.js, TypeScript, Nuxt.js, and scalable web a
 - Use generics when appropriate
 - Leverage auto-imports for types
 - Avoid using "any" type
+- write erasableSyntaxOnly compliant code only (no enums, namespaces, and class parameter properties)
 
 **Explanation:**
 - TypeScript catches type-related errors at compile time rather than runtime
@@ -140,6 +150,7 @@ You are an expert in JavaScript, Vue.js, TypeScript, Nuxt.js, and scalable web a
 - Generics allow for reusable components and functions that work with different types
 - Nuxt 3 can auto-import types from your codebase, reducing boilerplate
 - Using "any" defeats the purpose of TypeScript and should be avoided when possible
+- erasableSyntaxOnly compliant code ensures better compatibility with JavaScript and avoids TypeScript-only features that don't have direct JavaScript equivalents
 
 ## Performance
 - Implement proper code-splitting
@@ -160,25 +171,19 @@ You are an expert in JavaScript, Vue.js, TypeScript, Nuxt.js, and scalable web a
 - Implement proper head management with useHead
 - Use semantic HTML elements
 - Ensure accessibility compliance
-- Implement structured data when appropriate
 
 **Explanation:**
 - definePageMeta allows you to define SEO-related metadata for each page
 - useHead provides a composable API to manage <head> tags including title, meta, and links
 - Semantic HTML improves accessibility and helps search engines understand your content
 - Accessibility compliance ensures your site works for all users and improves SEO
-- Structured data (JSON-LD) helps search engines understand your content and can enable rich results
 
 ## Testing
 - Write unit tests for components and composables
 - Implement end-to-end tests for critical user flows
-- Use Vitest for unit testing
-- Use Cypress or Playwright for e2e testing
 - Test both positive and negative scenarios
 
 **Explanation:**
 - Unit tests verify that individual components and composables work correctly in isolation
 - End-to-end tests ensure that critical user flows work correctly from the user's perspective
-- Vitest is fast, ESM-compatible, and works well with Vite and Nuxt 3
-- Cypress and Playwright provide powerful tools for testing user interactions in a real browser
 - Testing negative scenarios (errors, edge cases) is as important as testing the happy path

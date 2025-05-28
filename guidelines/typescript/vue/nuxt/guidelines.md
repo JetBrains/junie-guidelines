@@ -1,6 +1,6 @@
 # Nuxt.js Guidelines
 
-You are an expert in JavaScript, TypeScript, Vue.js, Nuxt.js, and scalable web application development. You write secure, maintainable, and performant code following Nuxt.js and JavaScript best practices.
+You are an expert in JavaScript, TypeScript, Vue.js, Nuxt.js, and scalable web application development. You write secure, maintainable, and performant code following Nuxt and JavaScript best practices.
 
 ## JavaScript Best Practices
 - Follow ESLint and Prettier configurations
@@ -9,22 +9,14 @@ You are an expert in JavaScript, TypeScript, Vue.js, Nuxt.js, and scalable web a
 - Use async/await for asynchronous operations
 - Use template literals for string concatenation
 
-**Explanation:**
-- ESLint and Prettier help maintain consistent code style
-- Modern JavaScript features improve code readability and maintainability
-
-## Nuxt.js Best Practices
+## Nuxt Best Practices
 - Use Composition API with `<script setup>` for components
 - Leverage auto-imports for Vue and Nuxt composables
 - Use Nuxt modules instead of manual configurations
 - Implement proper error handling with error.vue
 
-**Explanation:**
-- Nuxt 3 has a different architecture than Nuxt 2, focusing on Vite, Vue 3, and TypeScript
-- The Composition API provides better type safety and code organization
-
 ## Directory Structure
-- Follow Nuxt.js 3 standard directory structure for better organization and auto-imports
+- Follow Nuxt 3 standard directory structure for better organization and auto-imports
 - Keep generated directories (.nuxt, .output, node_modules) untouched
 - Store stylesheets, fonts, and images in the assets directory
 - Place Vue components in the components directory, organized by feature
@@ -36,10 +28,6 @@ You are an expert in JavaScript, TypeScript, Vue.js, Nuxt.js, and scalable web a
 - Place static files in the public directory (formerly static in Nuxt 2)
 - Use the server directory for server-side code (API routes, middleware)
 
-**Explanation:**
-- Nuxt's directory structure is designed for auto-imports and convention over configuration
-- Proper organization improves maintainability and development speed
-
 ## Pages and Routing
 - Use dynamic routes appropriately
 - Implement nested routes when logical
@@ -49,13 +37,13 @@ You are an expert in JavaScript, TypeScript, Vue.js, Nuxt.js, and scalable web a
 
 ## Components
 - Create reusable components in the components directory
-- Use props validation
+- Use TypeScript for props
+- Use defineModel instead of a manual implementation of custom v-model
+- Use script setup (with TS by default)
+- Use props destructuring instead of withDefaults
 - Implement proper component naming (PascalCase)
 - Use slots for flexible component content
 - Organize components in subdirectories by feature
-
-**Explanation:**
-- Components in Nuxt 3 are auto-imported, so proper organization is crucial
 
 ## Composables
 - Place reusable logic in composables directory
@@ -68,18 +56,16 @@ You are an expert in JavaScript, TypeScript, Vue.js, Nuxt.js, and scalable web a
 - prefer useState when possible
 - use Pinia for more complex state management
 - Avoid global state when component or page-level state is sufficient
+- Do not use ref for global state
 - Structure stores by domain/feature
 - Implement proper typing for state
 
-**Explanation:**
-- Nuxt 3 provides built-in state management with useState
-- Pinia is the recommended store for more complex applications
-
 ## API Calls
 - Use useFetch or useAsyncData only for reactive data fetching
+- Composables should only be used in `setup` or in another composable - not `onMounted` or in a function triggered later on
 - Implement proper error handling for API calls
 - Use $fetch for direct API calls (or when no reactivity is necessary/intended)
-- Create API services for complex operations
+- Create composables for complex operations
 - Leverage server routes for sensitive operations
 
 ## TypeScript
