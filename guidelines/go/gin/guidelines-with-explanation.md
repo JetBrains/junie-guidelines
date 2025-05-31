@@ -324,7 +324,7 @@ func setupDatabase() (*sql.DB, error) {
 
 ## 8. Structured Logging
 
-* Use a structured logging library (e.g.: zerolog)
+* Use a structured logging library (e.g.: slog)
 * Include contextual information in logs (e.g.: traceId)
 * Avoid logging sensitive information
 
@@ -335,24 +335,32 @@ func setupDatabase() (*sql.DB, error) {
 * Secure logging prevents leaking sensitive data
 
 ```go
-// ConfigureLogging sets the timeformat, log-output and log-level globally
-func ConfigureLogging() {
-	// define time-format
-	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
-
-	// parse log-level from properties
+// ConfigureLogger sets up the global logger with the specified log level from environment
+func ConfigureLogger() {
+	// Parse log level from environment
 	env := os.Getenv("LOG_LEVEL")
-	level, err := zerolog.ParseLevel(env)
-	if err != nil {
-		log.Error().Err(err).Msgf("Could not parse log level '%s'", env)
-		return
+	var level slog.Level
+	switch strings.ToLower(env) {
+	case "debug":
+		level = slog.LevelDebug
+	case "info":
+		level = slog.LevelInfo
+	case "warn":
+		level = slog.LevelWarn
+	case "error":
+		level = slog.LevelError
+	default:
+		level = slog.LevelInfo
 	}
-	zerolog.SetGlobalLevel(level)
 
-	// setting output to stdout
-	log.Logger = zerolog.New(os.Stdout).With().Timestamp().Logger()
+	// Create logger with timestamp and level
+	logger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
+		Level: level,
+	}))
 
-	log.Logger.Info().Msgf("logging level set to %s", level)
+	// Set as default logger
+	slog.SetDefault(logger)
+	slog.Info("logging level set", "level", level.String())
 }
 ```
 

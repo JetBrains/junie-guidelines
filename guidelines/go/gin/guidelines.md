@@ -45,7 +45,7 @@
 
 ## 8. Structured Logging
 
-* Use a structured logging library (e.g.: zerolog)
+* Use a structured logging library (e.g.: slog)
 * Include contextual information in logs, (e.g.: traceId)
 * Avoid logging sensitive information
 
