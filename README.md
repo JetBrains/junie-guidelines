@@ -36,6 +36,7 @@ the guidelines in `.junie/guidelines.md` file so that Junie will follow these gu
     - [Guidelines](#guidelines-catalog)
         - [Java](#java)
         - [Python](#python)
+        - [Gol](#go)
     - [Contributing](#contributing)
 
 ## Guidelines Catalog
@@ -46,7 +47,7 @@ the guidelines in `.junie/guidelines.md` file so that Junie will follow these gu
 ### Python
 * [Django](/guidelines/python/django/guidelines.md) [(with Explanations)](/guidelines/python/django/guidelines-with-explanations.md)
 
-### GoLang
+### Go
 * [Gin-Gonic](guidelines/go/gin/guidelines.md) [(with Explanations)](guidelines/go/gin/guidelines-with-explanation.md)
 
 ## Contributing
