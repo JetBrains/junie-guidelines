@@ -46,5 +46,8 @@ the guidelines in `.junie/guidelines.md` file so that Junie will follow these gu
 ### Python
 * [Django](/guidelines/python/django/guidelines.md) [(with Explanations)](/guidelines/python/django/guidelines-with-explanations.md)
 
+### GoLang
+* [Gin-Gonic](guidelines/go/gin/guidelines.md) [(with Explanations)](guidelines/go/gin/guidelines-with-explanation.md)
+
 ## Contributing
 Contributions are always welcome! Please check out the [contributing guidelines](/CONTRIBUTING.md).
