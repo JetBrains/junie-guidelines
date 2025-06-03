@@ -36,7 +36,7 @@ the guidelines in `.junie/guidelines.md` file so that Junie will follow these gu
     - [Guidelines](#guidelines-catalog)
         - [Java](#java)
         - [Python](#python)
-        - [Gol](#go)
+        - [Go](#go)
     - [Contributing](#contributing)
 
 ## Guidelines Catalog
