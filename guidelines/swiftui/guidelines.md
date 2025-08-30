@@ -19,7 +19,7 @@ These coding standards define how AI assistants should contribute to the project
 
 ## Swift & SwiftUI Best Practices
 
-- Adopt `@Observable` over `ObservableObject` where supported
+- Use the Observation framework (@Observable) instead of ObservableObject where supported.
 - Always use async/await instead of callbacks or Combine for new code
 - Prefer `navigationDestination` and `NavigationStack` over `.sheet` or `.fullScreenCover`
 - Avoid UIKit unless SwiftUI cannot support a use-case (justify and document exception)
