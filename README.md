@@ -8,7 +8,7 @@
 
 A catalog of technology-specific guidelines for optimizing Junie code generation.
 
-[Junie](https://www.jetbrains.com/junie/) is an AI agent for JetBrains IDEs including [IntelliJ IDEA](https://www.jetbrains.com/idea/), [PyCharm](https://www.jetbrains.com/pycharm/), [WebStorm](https://www.jetbrains.com/webstorm/), [GoLand](https://www.jetbrains.com/go/), [PhpStorm](https://www.jetbrains.com/phpstorm/), [RubyMine](https://www.jetbrains.com/ruby/), and [RustRover](https://www.jetbrains.com/rust/).
+[Junie](https://www.jetbrains.com/junie/) is an AI agent for JetBrains IDEs including [IntelliJ IDEA](https://www.jetbrains.com/idea/), [PyCharm](https://www.jetbrains.com/pycharm/), [WebStorm](https://www.jetbrains.com/webstorm/), [GoLand](https://www.jetbrains.com/go/), [PhpStorm](https://www.jetbrains.com/phpstorm/), [RubyMine](https://www.jetbrains.com/ruby/), [RustRover](https://www.jetbrains.com/rust/) and [Rider](https://www.jetbrains.com/rider/).
 
 ## Purpose of the guidelines?
 These guidelines capture the coding conventions and best practices your team agrees to follow.
