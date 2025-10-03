@@ -37,6 +37,7 @@ the guidelines in `.junie/guidelines.md` file so that Junie will follow these gu
         - [Java](#java)
         - [Python](#python)
         - [Go](#go)
+        - [SwiftUI](#swiftui)
     - [Contributing](#contributing)
 
 ## Guidelines Catalog
@@ -49,6 +50,9 @@ the guidelines in `.junie/guidelines.md` file so that Junie will follow these gu
 
 ### Go
 * [Gin-Gonic](guidelines/go/gin/guidelines.md) [(with Explanations)](guidelines/go/gin/guidelines-with-explanation.md)
+
+### SwiftUI
+* [SwiftUI](/guidelines/swiftui/guidelines.md) [(with Explanations)](/guidelines/swiftui/guidelines-with-explanations.md)
 
 ## Contributing
 Contributions are always welcome! Please check out the [contributing guidelines](/CONTRIBUTING.md).
