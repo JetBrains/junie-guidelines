@@ -28,6 +28,10 @@ These guidelines cover:
 You can specify your coding style, best practices, and general preferences by specifying 
 the guidelines in `.junie/guidelines.md` file so that Junie will follow these guidelines while generating code.
 
+**NOTE:** If you prefer to use `AGENTS.md` instead of `.junie/guidelines.md` then you can specify the path in Junie Settings.
+
+![junie-project-settings.png](assets/junie-project-settings.png)
+
 ## Table Of Contents
 
 - [Junie Guidelines ](#junie-guidelines)
@@ -42,6 +46,7 @@ the guidelines in `.junie/guidelines.md` file so that Junie will follow these gu
 ## Guidelines Catalog
 
 ### Java
+* [Java](/guidelines/java/java/guidelines.md) [(with Explanations)](/guidelines/java/java/guidelines-with-explanations.md)
 * [Spring Boot](/guidelines/java/spring-boot/guidelines.md) [(with Explanations)](/guidelines/java/spring-boot/guidelines-with-explanations.md)
 
 ### TypeScript
