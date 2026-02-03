@@ -12,6 +12,8 @@ These are the general guidelines for writing Java code.
 - [6. Use of `Optional`](#6-use-of-optional)
 - [7. Stream API Best Practices](#7-stream-api-best-practices)
 - [8. Collections](#8-collections)
+- [9. Date and Time](#9-date-and-time)
+- [10. Strings](#10-strings)
 
 ## 1. Naming Conventions
 
@@ -335,3 +337,61 @@ Follow the Java naming conventions.
     for (int i = 0; i < names.size(); i++) { ... }
     ```
 -   **Explanation:** The `for-each` loop is more concise, less error-prone (no off-by-one errors), and more readable. Use an iterator or a traditional for loop only when you need to modify the collection while iterating.
+
+## 9. Date and Time
+
+### 9.1. Prefer Java 8 Date-Time API
+
+-   **Guideline:** Prefer using the Java 8 Date-Time API (`java.time.*`) over legacy `java.util.Date` and `java.util.Calendar`.
+
+-   **Example:**
+
+    ```java
+    // Good
+    LocalDate birthday = LocalDate.of(1990, Month.MAY, 12);
+    LocalDate today = LocalDate.now(ZoneId.of("UTC"));
+    Period age = Period.between(birthday, today);
+
+    ZonedDateTime meeting = ZonedDateTime.of(2026, 2, 3, 9, 30, 0, 0, ZoneId.of("Europe/Berlin"));
+    String iso = meeting.format(DateTimeFormatter.ISO_ZONED_DATE_TIME);
+
+    // Bad
+    Date date = new Date();
+    Calendar cal = Calendar.getInstance();
+    cal.set(1990, Calendar.MAY, 12);
+    ```
+
+-   **Explanation:** The `java.time` API is immutable, thread-safe, and more expressive. It offers clear types for different concepts (`Instant`, `LocalDate`, `LocalDateTime`, `ZonedDateTime`, `Duration`, `Period`) and comprehensive formatting/parsing with `DateTimeFormatter`.
+
+## 10. Strings
+
+### 10.1. Use Multiline Text Blocks for Multi-line Strings
+
+-   **Guideline:** Use text blocks (`"""`), available since Java 15, for multi-line string literals (e.g., SQL, JSON, XML) instead of concatenation or `\n` escapes.
+
+-   **Example:**
+
+    ```java
+    // Good
+    String sql = """
+        SELECT id, name
+        FROM customers
+        WHERE status = 'ACTIVE'
+        ORDER BY name
+        """;
+
+    String json = """
+        {
+          "name": "Alice",
+          "roles": ["USER", "ADMIN"]
+        }
+        """;
+
+    // Bad
+    String sqlBad = "SELECT id, name\n" +
+                    "FROM customers\n" +
+                    "WHERE status = 'ACTIVE'\n" +
+                    "ORDER BY name";
+    ```
+
+-   **Explanation:** Text blocks improve readability, reduce escaping, and preserve intended formatting. They also support strip indentation and trailing newline control, making them ideal for embedded resources and templates.

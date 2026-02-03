@@ -12,6 +12,8 @@ These are the general guidelines for writing Java code.
 - [6. Use of `Optional`](#6-use-of-optional)
 - [7. Stream API Best Practices](#7-stream-api-best-practices)
 - [8. Collections](#8-collections)
+- [9. Date and Time](#9-date-and-time)
+- [10. Strings](#10-strings)
 
 ## 1. Naming Conventions
 
@@ -64,3 +66,11 @@ Follow the Java naming conventions.
 - Methods that return collections should return an empty collection instead of `null`.
 - Use the diamond operator (`<>`) for generic type inference.
 - Prefer the `for-each` loop for iterating over collections.
+
+## 9. Date and Time
+
+- Prefer using the Java 8 Date-Time API (`java.time.*`) over the legacy `java.util.Date`/`java.util.Calendar` APIs.
+
+## 10. Strings
+
+- Use multiline text blocks (`"""`), available since Java 15, for multi-line string literals (e.g., SQL, JSON, XML) instead of concatenation or newline escapes.
