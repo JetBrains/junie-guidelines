@@ -25,10 +25,11 @@ These guidelines cover:
 * Real-world code examples accompanied by clear explanations
 
 ## How to use the guidelines in Junie?
-You can specify your coding style, best practices, and general preferences by specifying 
-the guidelines in `.junie/guidelines.md` file so that Junie will follow these guidelines while generating code.
+You can define your coding style, best practices, and general preferences in `.junie/AGENTS.md` or `AGENTS.md`.
+Alternatively, you can specify a custom path to the guidelines in the IDE settings (Settings | Tools | Junie | Project Settings).
 
-**NOTE:** If you prefer to use `AGENTS.md` instead of `.junie/guidelines.md` then you can specify the path in Junie Settings.
+For more information,
+see [Junie Documentation](https://junie.jetbrains.com/docs/guidelines-and-memory.html).
 
 ![junie-project-settings.png](assets/junie-project-settings.png)
 
