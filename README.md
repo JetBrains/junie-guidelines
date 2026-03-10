@@ -42,6 +42,7 @@ see [Junie Documentation](https://junie.jetbrains.com/docs/guidelines-and-memory
         - [Java](#java)
         - [Python](#python)
         - [Go](#go)
+        - [F#](#fsharp)
     - [Contributing](#contributing)
 
 ## Guidelines Catalog
@@ -58,6 +59,9 @@ see [Junie Documentation](https://junie.jetbrains.com/docs/guidelines-and-memory
 
 ### Go
 * [Gin-Gonic](guidelines/go/gin/guidelines.md) [(with Explanations)](guidelines/go/gin/guidelines-with-explanation.md)
+
+### F#
+* [F#](guidelines/fsharp/guidelines.md) [(with Explanations)](guidelines/fsharp/guidelines-with-explanation.md)
 
 ## Contributing
 Contributions are always welcome! Please check out the [contributing guidelines](/CONTRIBUTING.md).
