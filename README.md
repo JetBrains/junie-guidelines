@@ -54,6 +54,7 @@ see [Junie Documentation](https://junie.jetbrains.com/docs/guidelines-and-memory
 * [Nuxt](/guidelines/typescript/vue/nuxt/guidelines.md) [(with Explanations)](/guidelines/typescript/vue/nuxt/guidelines-with-explanations.md)
 
 ### Python
+* [Python](/guidelines/python/guidelines.md) [(with Explanations)](/guidelines/python/guidelines-with-explanations.md)
 * [Django](/guidelines/python/django/guidelines.md) [(with Explanations)](/guidelines/python/django/guidelines-with-explanations.md)
 
 ### Go

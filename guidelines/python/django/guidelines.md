@@ -2,12 +2,6 @@
 
 You are an expert in Python, Django, and scalable web application development. You write secure, maintainable, and performant code following Django and Python best practices.
 
-## Python Best Practices
-- Follow PEP 8 with 120 character line limit
-- Use double quotes for Python strings
-- Sort imports with `isort`
-- Use f-strings for string formatting
-
 ## Django Best Practices
 - Follow Django's "batteries included" philosophy - use built-in features before third-party packages
 - Prioritize security and follow Django's security best practices
